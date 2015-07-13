@@ -1,9 +1,8 @@
-tion for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode(int x) { val = x; }
- * }
+/**
+ * Solution 1: O(n) space, O(n) time. Keep creating new nodes for added digits.
+ * Solution 2: O(1) space, O(n) time. Store added digits in both lists (destroying original node), 
+ *             create new node for residual carry. 
+ * Solution 3: recursive.
  */
 public class Solution {
     // O(n) space, O(n) time.
@@ -27,4 +26,20 @@ public class Solution {
         }
         return dummy.next;
     }
+}
+
+// Recursive solution (from leetcode discussion)
+public ListNode addTwoNumbersWithCarryOver(ListNode l1, ListNode l2, int carryOver){
+    if (l1 == null) {
+       return carryOver == 0 ? l2 : addTwoNumbersWithCarryOver(new ListNode(carryOver), l2, 0); 
+    }
+
+    if (l2 == null) {
+       return carryOver == 0 ? l1 : addTwoNumbersWithCarryOver(l1, new ListNode(carryOver), 0);
+    }
+
+    int sumVal = l1.val + l2.val + carryOver;
+    ListNode returnVal = new ListNode(sumVal % 10);
+    returnVal.next = addTwoNumbersWithCarryOver(l1.next, l2.next, sumVal / 10);
+    return returnVal;
 }
