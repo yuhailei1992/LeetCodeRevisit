@@ -17,9 +17,37 @@ public class Solution {
             return true;
         }
         
-        // 1, find midpoint. Reverse the first half along the way.
-        ListNode 
+        // 1, reverse the first part.
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+        ListNode s = dummy;
+        ListNode f = dummy;
+        ListNode sNext = s.next;
+        ListNode sPre = null;
+        while (f != null && f.next != null) {
+            f = f.next.next;
+            s = sNext;
+            sNext = s.next;
+            s.next = sPre;
+            sPre = s;
+        }
+        
+        // 2, compare(odd - even).
+        ListNode p1, p2;
+        if (f == null) { // odd number of nodes.
+            p1 = s.next;
+            p2 = sNext;
+        } else {
+            p1 = s;
+            p2 = sNext;
+        }
+        while (p1 != null && p2 != null) {
+            if (p1.val != p2.val) {
+                return false;
+            }
+            p1 = p1.next;
+            p2 = p2.next;
+        }
+        return p1 == null && p2 == null;
     }
 }
-
-
