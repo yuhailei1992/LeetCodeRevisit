@@ -10,7 +10,7 @@ public class Solution {
         if (b == null || b.length() == 0) {
             return a;
         }
-        
+
         int carry = 0;
         int tmpVal = 0;
         StringBuilder sb = new StringBuilder();

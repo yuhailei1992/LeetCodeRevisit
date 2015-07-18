@@ -3,11 +3,11 @@
  * Solution 2: use a stack. Push the first half and pop the second half.
  * Solution 3: use an array. Copy everything to the array, and judge if it is a palindrome.
  * Solution 4: use two pointers: pFast and pSlow. When pFast reaches end, pSlow is at midpoint;
- *             reverse the first half when pSlow moves. The use two pointers to judge if the 
+ *             reverse the first half when pSlow moves. The use two pointers to judge if the
  *             list is a palindrome.
- *             For example: a -> b -> c becomes a <- b -> c. Then we can start b and compare the 
- *             two parts using two pointers. This method cannot be implemented. 
- * Solution 5: reverse the second half, and compare with the first half. 
+ *             For example: a -> b -> c becomes a <- b -> c. Then we can start b and compare the
+ *             two parts using two pointers. This method cannot be implemented.
+ * Solution 5: reverse the second half, and compare with the first half.
  */
 
 public class Solution {
@@ -16,7 +16,7 @@ public class Solution {
         if (head == null || head.next == null) {
             return true;
         }
-        
+
         // 1, reverse the first part.
         ListNode dummy = new ListNode(0);
         dummy.next = head;
@@ -31,7 +31,7 @@ public class Solution {
             s.next = sPre;
             sPre = s;
         }
-        
+
         // 2, compare(odd - even).
         ListNode p1, p2;
         if (f == null) { // odd number of nodes.

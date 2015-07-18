@@ -17,7 +17,7 @@ public class Solution {
         if (x < 10) {
             return true;
         }
-                int power = (int)Math.log10(x);
+        int power = (int)Math.log10(x);
         for (int i = power; i > power / 2; i--) {
             int leftDigit = x / (int)(Math.pow(10, i)) % 10;
             int rightDigit = x / (int)Math.pow(10, power - i) % 10;
@@ -46,7 +46,7 @@ public class Solution {
             reversed += (xTemp % 10);
             xTemp /= 10;
         }
-        
+
         return reversed == x;
     }
 }

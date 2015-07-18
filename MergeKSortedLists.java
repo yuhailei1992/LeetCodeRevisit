@@ -12,16 +12,16 @@ public class Solution {
             }
         }
     }
-    
+
     public ListNode mergeKLists(ListNode[] lists) {
         if (lists == null || lists.length == 0) {
             return null;
         }
-        
+
         ListNode dummy = new ListNode(0);
         ListNode p = dummy;
         ListNode toAppend;
-        
+
         // build initial queue.
         Comparator<ListNode> comparator = new ListNodeComparator();
         PriorityQueue<ListNode> queue = new PriorityQueue<ListNode>(lists.length, comparator);
@@ -30,7 +30,7 @@ public class Solution {
                 queue.add(lists[i]);
             }
         }
-        
+
         // poll the smallest from queue and append to the merged list.
         while (!queue.isEmpty()) {
             toAppend = queue.poll();
@@ -41,7 +41,7 @@ public class Solution {
             p = toAppend;
             p.next = null;
         }
-        
+
         return dummy.next;
     }
 }
