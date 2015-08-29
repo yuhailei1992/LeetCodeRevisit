@@ -1,5 +1,4 @@
 public class Solution {
-
     public static class EndHeightPair {
         public int end;
         public int height;
